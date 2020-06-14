@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
 
   # Redirecciono puertos desde la maquina virtual a la maquina real. Por ejemplo 
   # del puerto 80 (web) de la maquina virtual con Debian se podrá acceder a través
-  # del puerto 8081 de nuestro navegador.
+  # del puerto 8080 de nuestro navegador.
   # Esto se realiza para poder darle visibilidad a los puertos de la maquina virtual 
   # y además para que no se solapen los puertos con los de nuestra equipo en el caso de que
   # ese número de puerto este en uso.
@@ -76,11 +76,11 @@ Vagrant.configure("2") do |config|
   #SHELL
   
   # Copia el archivo de configuración del servidor web
-  config.vm.provision "file", source: "configs/g2.site.conf", destination: "/tmp/g2.site.conf"
+  # config.vm.provision "file", source: "configs/g2.site.conf", destination: "/tmp/g2.site.conf"
   
   # En este archivo tendremos el provisionamiento de software necesario para nuestra 
   # maquina virtual. Por ejemplo, servidor web, servidor de base de datos, etc.
-  config.vm.provision :shell, path: "Vagrant.bootstrap.sh", run: "always"
+  config.vm.provision :shell, path: "Vagrant.docker.sh", run: "always"
   
 
 end
